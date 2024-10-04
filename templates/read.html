@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcccb; /* Light pink background */
+            margin: 0;
+            padding: 50px; /* Padding around the body */
+            text-align: center; /* Center-align all text */
+        }
+        h1 {
+            color: #333; /* Dark color for the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        table {
+            margin: 0 auto; /* Center the table */
+            border-collapse: collapse; /* Merge borders */
+            width: 80%; /* Table width */
+            background: #fff; /* White background for the table */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        th, td {
+            border: 1px solid #ddd; /* Border for table cells */
+            padding: 12px; /* Inner padding for cells */
+            text-align: center; /* Center-align text in cells */
+        }
+        th {
+            background-color: #007BFF; /* Header color */
+            color: white; /* White text in header */
+        }
+        button, a {
+            background-color: #007BFF; /* Button color */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            text-decoration: none; /* Remove underline for links */
+            display: inline-block; /* Block element for links */
+            transition: background-color 0.3s; /* Smooth transition */
+            margin-top: 10px; /* Space above */
+        }
+        button:hover, a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .add-exercise-button {
+            margin-top: 20px; /* Space above */
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercise List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exercise in exercises %}
+                <tr>
+                    <td>{{ exercise.id }}</td>
+                    <td>{{ exercise.name }}</td>
+                    <td>{{ exercise.description }}</td>
+                    <td>{{ exercise.duration }}</td>
+                    <td>
+                        <a href="{% url 'exercise_update' exercise.id %}">Edit</a>
+                        <a href="{% url 'exercise_delete' exercise.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'exercise_create' %}" class="add-exercise-button">Add New Exercise</a>
+</body>
+</html>

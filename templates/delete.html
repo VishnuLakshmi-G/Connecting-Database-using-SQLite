@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcccb; /* Light pink background */
+            margin: 0;
+            padding: 50px; /* Padding around the body */
+            text-align: center; /* Center-align all text */
+        }
+        h1 {
+            color: #333; /* Dark color for the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        form {
+            display: inline-block; /* Center the form */
+            padding: 20px; /* Inner padding for the form */
+            background: #fff; /* White background for the form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            text-align: left; /* Left-align form elements */
+        }
+        .form-group {
+            margin-bottom: 15px; /* Space between form fields */
+        }
+        button, a {
+            background-color: #007BFF; /* Button color */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 16px; /* Font size */
+            text-decoration: none; /* Remove underline for links */
+            display: inline-block; /* Block element for links */
+            transition: background-color 0.3s; /* Smooth transition */
+            margin-top: 10px; /* Space above */
+        }
+        button:hover, a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .cancel-button {
+            display: block; /* Make cancel button a block element */
+            margin-top: 15px; /* Space above the cancel button */
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete Exercise</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to delete this exercise?</p>
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'exercise_list' %}" class="cancel-button">Cancel</a>
+    </form>
+</body>
+</html>
